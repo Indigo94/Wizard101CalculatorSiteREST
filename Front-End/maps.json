@@ -1,0 +1,47 @@
+{
+    "Polus" : {
+        "Boiler Room" : ["Replace Water Jug","Open Water Ways","Fix Wiring"],
+        "Comms": ["Reboot Wifi","Fix Wiring"],
+        "Dropship": ["Chart Course","Insert Key","Fix Wiring"],
+        "Electrical": ["Download Data","Fix Wiring","Fix Lights"],
+        "Lab": ["Node Terminal","Record Temperature","Repair Drill","Align Telescope","Fix Wiring"],
+        "Medbay": ["Inspect Sample","Submit Scan","Fix Wiring"],
+        "O2": ["Empty Garbage","Download Data","Fill Canisters","Monitor Tree","Fix Wiring"],
+        "Office": ["Swipe Card","Scan Boarding Pass","Upload Data","Fix Wiring"],
+        "Outside": ["Weather Node (Weapons - Right)","Weather Node (Weapons - Left)","Weather Node (Electrical)","Weather Node (Comms)","Weather Node (Lava)","Weather Node (Lab)","Record Temperature","Emergency - Scan","Emergency - Radio","Fix Wiring"],
+        "Specimen": ["Start Reactor","Download Data","Unlock Manifolds","Sort Artifacts","Fix Wiring"],
+        "Storage": ["Fuel Engines","Fix Wiring"],
+        "Weapons": ["Clear Asteroids","Download Data","Fix Wiring"]
+        },
+    "Mira HQ" : {
+        "Admin" : ["Prime Shields","Chart Course","Enter ID Code","Accept Power","Fix Wiring","Emergency - Pin"],
+        "Balcony" : ["Clear Asteroids","Measure Weather","Fix Wiring"],
+        "Cafeteria" : ["Empty Garbage","Buy Beverage","Accept Power","Fix Wiring","Download Data"],
+        "Comms" : ["Accept Power","Fix Wiring","Emergency - Pin"],
+        "Green house" : ["Clean O2 Filter","Water Plants","Accept Power","Fix Wiring", "Emergency - Pin"],
+        "HallWay" : ["Fix Wiring","Emergency - Pin"],
+        "Locker Room" : ["Fix Wiring"],
+        "Lab" : ["Assemble Artifact","Sort Samples","Accept Power","Fix Wiring"],
+        "Launch Pad": ["Fuel Engines","Run Diagnostics","Accept Power","Fix Wiring"],
+        "Medbay" : ["Submit Scan", "Accept Power","Fix Wiring"],
+        "Office" : ["Process Data","Accept Power","Fix Lights","Fix Wiring"],
+        "Reactor" : ["Start Reactor","Unlock Manifold","Divert Power To","Fix Wiring","Emergency - Scan"],
+        "Storage" : ["Water Plants","Fix Wiring"]
+    },
+    "The Skeld" : {
+        "Admin" : ["Swipe Card","Fix Wires","Upload Data", "Emergency - Pin"],
+        "Cafeteria" : ["Download Data","Fix Wires","Empty Garbage"],
+        "Comms" : ["Download Data","Accept Power","Fix Wiring","Sabotage - Radio"],
+        "Electrical" : ["Download Data","Calibrate Distributor","Divert Power To","Fix Wiring","Fix Lights"],
+        "Upper Engine" : ["Align Engine Output", "Accept Power","Fix Wiring"],
+        "Lower Engine" : ["Align Engine Output","Accept Power","Fix Wiring"],
+        "Medbay" : ["Submit Scan", "Inspect Sample","Fix Wiring"],
+        "Navigation" : ["Fix Wires","Download Data","Chart Course","Stabilize Steering","Accept Power"],
+        "O2" : ["Empty Chute","Clean O2 Filter","Accept Power","Fix Wiring","Emergency - Pin"],
+        "Reactor" : ["Unlock Manifolds","Start Reactor","Fix Wiring","Emergency - Scan"],
+        "Security" : ["Accept Power","Fix Wiring"],
+        "Shields" : ["Prime Shields","Accept Power","Fix Wiring"],
+        "Storage" : ["Fuel Engines","Fix Wiring"],
+        "Weapons" : ["Download Data","Clear Asteroids","Divert Power","Fix Wiring"]
+    }
+    }

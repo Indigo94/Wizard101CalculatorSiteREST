@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<header>
+    <Title>Wizard101 - Damage Calculator</Title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script type="text/javascript" src="./javascript/maincode.js"></script>
+    <meta charset="utf-8">
+    <meta name="description" content="A website to help you calculate how much damage your cards will do in Wizard101">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</header>
+
+
+<body onload="toggle()">
+
+    <div class="card" style="background-color:aliceblue;">
+        <div class="card-body">
+            <div class="container">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="https://www.etsy.com/shop/SolidPrintsCreations" target="_blank"><img
+                                    class="d-block w-100" src="./pictures/banner_1.jpg" alt="First slide"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="background-color:aliceblue;">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="table-normal" class="table table-bordered">
+
+
+                    <tr id="school_selector" class="d-table-row">
+                        <td>Card School Type</td>
+                        <td>
+                            <select id="card_type_selector" class="browser-default custom-select">
+                                <!-- <option selected>Storm</option> -->
+                                <option id="select_fire" value="fire">Fire</option>
+                                <option id="select_ice" value="ice">Ice</option>
+                                <option id="select_storm" value="storm">Storm</option>
+                                <option id="select_myth" value="myth">Myth</option>
+                                <option id="select_life" value="life">Life</option>
+                                <option id="select_death" value="death">Death</option>
+                                <option id="select_balance" value="balance">Balance</option>
+                                <option id="select_shadow" value="shadow">Shadow</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr class="table-info">
+                        <td>School Boost (%)</td>
+                        <td><input type="number" id="wizard_boost" value="" class="form-control"></td>
+                    </tr>
+                    <tr class="table-info">
+                        <td>School Boost (+)</td>
+                        <td><input type="number" id="wizard_flat" value="" class="form-control"></td>
+                    </tr>
+
+                    <tr class="table-danger">
+                        <td>Damage Type</td>
+                        <td>
+                            <select id="damage_type_selector" onchange="toggle()" class="browser-default custom-select">
+                                <option id="select_normal" value="minmax">Min - Max Damage</option>
+                                <option id="select_single" value="single">Single Damage</option>
+                                <option id="select_pip" value="pip">Damage Per Pip</option>
+                                <option id="select_area" value="round">Damage(?) + Over 3 Round </option>
+                            </select>
+                        </td>
+                    </tr>
+
+
+
+                    <!-- For Min-Max Cards  -->
+                    <tr id="class_reg_min" class="d-table-row">
+                        <td>Card Damage - Min</td>
+                        <td><input type="number" id="reg_card_damage_min" value="" class="form-control"></td>
+                    </tr>
+                    <tr id="class_reg_max" class="d-table-row">
+                        <td>Card Damage - Max</td>
+                        <td><input type="number" id="reg_card_damage_max" value="" class="form-control"></td>
+                    </tr>
+                    <!-- For Single Damage  -->
+                    <tr id="class_single_damage">
+                        <td>Card Damage</td>
+                        <td><input type="number" id="single_card_damage" value="" class="form-control"></td>
+                    </tr>
+                    <!-- For Damage Per Pip -->
+                    <tr id="class_pip_damage">
+                        <td>Card Damage</td>
+                        <td><input type="number" id="pip_card_damage" value="" class="form-control">
+                            <input type="number" id="pip_card_enchantment" value="" placeholder="Enchantment(?) (+)"
+                                class="form-control"></td>
+                    </tr>
+                    <tr id="class_pip_pips">
+                        <td>Total Pips</td>
+                        <td><input type="number" id="pip_count" value="" class="form-control"></td>
+                    </tr>
+                    <!-- For Area damage  -->
+                    <tr id="class_area_damage">
+                        <td>Initial Damage(?)</td>
+                        <td><input type="number" id="area_init_damage" value="" class="form-control"></td>
+                    </tr>
+                    <tr id="class_area_over">
+                        <td>Over Time Damage</td>
+                        <td><input type="number" id="area_over_time_damage" value="" class="form-control"></td>
+                    </tr>
+
+
+                    <tr class="table-success">
+                        <td>Global Aura(%)</td>
+                        <td><input type="number" id="global_aura" value="" class="form-control"></td>
+                    </tr>
+                    <tr class="table-success">
+                        <td>Personal Aura(%)</td>
+                        <td><input type="number" id="aura_damage" value="" class="form-control"></td>
+                    </tr>
+                    <!-- blades -->
+                    <tr class="table-success">
+                        <td>Blades(+) and Debuff(-) (%)
+                        </td>
+                        <td><input type="number" id="blade_boost" value="" class="form-control"
+                                placeholder="Click a blade to remove it">
+                            <button class="btn btn-primary form-control" onclick="add_blades()" id="blade_adder">Add
+                                Blade</button>
+                            <button class="btn btn-secondary form-control" onclick="removeBlades()"
+                                id="blade_remover">Remove All Blades</button>
+                            <ul id="blades_list" class="list-group">
+                            </ul>
+                    <tr>
+                    </tr>
+                    </td>
+                    </tr>
+                    <!-- traps -->
+                    <tr class="table-success">
+                        <td>Traps(+) and Shields(-) (%)
+                        </td>
+                        <td><input type="number" id="trap_boost" value="" class="form-control"
+                                placeholder="Click on a trap to remove it">
+                            <button class="btn btn-primary form-control" onclick="add_traps()" id="trap_adder">Add
+                                Trap</button>
+                            <button class="btn btn-secondary form-control" onclick="removeTraps()"
+                                id="trap_remover">Remove
+                                All Traps</button>
+                            <ul id="traps_list" class="list-group">
+                            </ul>
+                    </tr>
+                    <tr class="table-success">
+                        <td>Enemy Internal Boost(%)</td>
+                        <td><input type="number" id="enemy_boost" value="" class="form-control"></td>
+                    </tr>
+
+                    <!-- Min-Max Damage -->
+                    <tr id="class_reg_1">
+                        <td>Minimum Calculated Damage</td>
+                        <td><input type="text" id="minmax_min_damage" value="" class="form-control" readonly></td>
+                    </tr>
+                    <tr id="class_reg_2">
+                        <td>Maximum Calculated Damage</td>
+                        <td><input type="text" id="minmax_max_damage" value="" class="form-control" readonly></td>
+                    </tr>
+                    <tr id="class_reg_3">
+                        <td>Critical(?) Minimum Damage</td>
+                        <td><input type="text" id="minmax_critical_minimum" value="" class="form-control" readonly>
+                        </td>
+                    </tr>
+                    <tr id="class_reg_4">
+                        <td>Critical(?) Maximum Damage</td>
+                        <td><input type="text" id="minmax_critical_maximum" value="" class="form-control" readonly>
+                        </td>
+                    </tr>
+                    <!-- single damage -->
+                    <tr id="class_single_1">
+                        <td>Calculated Damage</td>
+                        <td><input type="text" id="single_damage" value="" class="form-control" readonly></td>
+                    </tr>
+                    <tr id="class_single_2">
+                        <td>Critical(?) Damage</td>
+                        <td><input type="text" id="single_critical" value="" class="form-control" readonly></td>
+                    </tr>
+                    <!-- damage per pip -->
+                    <tr id="class_pip_1">
+                        <td>Calculated Damage</td>
+                        <td><input type="text" id="pip_damage" value="" class="form-control" readonly></td>
+                    </tr>
+                    <tr id="class_pip_2">
+                        <td>Critical(?) Damage</td>
+                        <td><input type="text" id="pip_critical" value="" class="form-control" readonly></td>
+                    </tr>
+                    <!-- damage over area -->
+                    <tr id="class_doa_1">
+                        <td>Initial(?) Damage</td>
+                        <td><input type="text" id="area_initial_damage" value="" class="form-control" readonly></td>
+                    </tr>
+                    <tr id="class_doa_2">
+                        <td>Damage Over 3 Rounds</td>
+                        <td><input type="text" id="area_time" value="" class="form-control" readonly></td>
+                    </tr>
+                    <tr id="class_doa_3">
+                        <td>Critical(?) Initial Damage</td>
+                        <td><input type="text" id="area_ending_initial_damage" value="" class="form-control" readonly>
+                        </td>
+                    </tr>
+                    <tr id="class_doa_4">
+                        <td>Critical(?) DOT Damage</td>
+                        <td><input type="text" id="area_ending_critical_dot" value="" class="form-control" readonly>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <div class="row">
+                            <td class="text-center" colspan="2">
+                                <button class="btn btn-primary" onclick="entry()">Calculate Damage</button>
+                            </td>
+                            </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card text-center">
+        <div class="card-header">
+            <p class="card-text">Special thanks to Reddit user <a href="https://www.reddit.com/user/TheMarioPianist">TheMarioPianist</a>. Their contributions allowed for this 
+                calculator to be as accurate as it can be.
+            </p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+</body>
+<footer>
+    <div class="container mt-2 mb-4">
+        <div class="row text-center">
+            <a class="col-4"></a>
+            <a href="https://www.streamlabs.com/Fr0stSoldier" target="_blank" class="btn btn-primary col-2 mr-4">Donate</a>
+            <a href="https://forms.gle/QGoMieo1JzuR9R9o8" target="_blank" class="btn btn-primary col-2">Contact Me</a>
+        </div>
+    </div>
+</footer>
+
+</html>
